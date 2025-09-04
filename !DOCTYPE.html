@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Invitación Especial - Ian Harvie</title>
+<style>
+    body {
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        text-align: center;
+        color: #fff;
+        margin: 0;
+        min-height: 100vh;
+        background: linear-gradient(90deg, #a1c4fd, #fbc2eb, #fed6e3, #cbbacc), url('ian1.jpeg.jpeg') center center no-repeat fixed;
+        background-size: cover, contain;
+        background-blend-mode: overlay;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .header {
+        font-size: clamp(24px, 5vw, 50px);
+        font-weight: bold;
+        position: fixed;
+        top: 40px;
+        left: 60%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        background: linear-gradient(90deg, #a8edea, #fed6e3, #d4fc79, #a1c4fd, #fbc2eb, #a8edea);
+        background-size: 400% 400%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: pastelDegradado 8s ease infinite, aparecer 2.5s ease forwards;
+        z-index: 5;
+        text-shadow: 0 0 10px rgba(255,255,255,0.4);
+    }
+
+    @keyframes pastelDegradado {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    @keyframes aparecer {
+        0% { clip-path: inset(0 100% 0 0); }
+        100% { clip-path: inset(0 0 0 0); }
+    }
+
+    .foto {
+        position: relative;
+        margin-top: 130px;
+        display: inline-block;
+        border-radius: 20px;
+        padding: 8px;
+        background: linear-gradient(135deg, #a1c4fd, #c2e9fb, #fbc2eb, #fed6e3);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    }
+
+    .foto img {
+        border-radius: 15px;
+        width: 230px;
+        height: auto;
+        display: block;
+    }
+
+    .nombre {
+        margin-top: 10px;
+        font-size: 22px;
+        font-weight: bold;
+        color: #fff;
+        background: linear-gradient(90deg, #a1c4fd, #fbc2eb);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 12px rgba(255,255,255,0.6);
+    }
+
+    .mensaje {
+        position: fixed;
+        top: 30%;
+        left: 2%;
+        width: 32%;
+        font-size: 18px;
+        font-style: italic;
+        line-height: 1.6;
+        text-align: justify;
+        color: #fff;
+        text-shadow: 0 0 10px rgba(0,0,0,0.6);
+        background: rgba(0,0,0,0.15);
+        border-radius: 15px;
+        padding: 15px;
+    }
+
+    .mensaje span {
+        font-weight: bold;
+        color: #ffd1dc;
+        text-shadow: 0 0 8px rgba(255,255,255,0.8);
+    }
+
+    .foto-derecha {
+        position: fixed;
+        top: 20%;
+        right: 8%;
+        text-align: center;
+        width: 240px;
+    }
+
+    .foto-derecha img {
+        border-radius: 20px;
+        width: 220px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        display: block;
+        margin: 0 auto;
+    }
+
+    .mensaje-abajo {
+        margin-top: 12px;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 1.4;
+        color: #fff;
+        background: rgba(0,0,0,0.4);
+        padding: 10px;
+        border-radius: 12px;
+        text-shadow: 0 0 10px rgba(255,255,255,0.9);
+    }
+
+    .buttons {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 12px 20px;
+        margin: 8px;
+        font-size: 16px;
+        color: white;
+        border-radius: 30px;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+    }
+
+    .btn:nth-child(1) { background-color: #a1c4fd; }
+    .btn:nth-child(2) { background-color: #fcbad3; }
+    .btn:nth-child(3) { background-color: #b5ead7; }
+    .btn:nth-child(4) { background-color: #cbbacc; }
+
+    .emoji {
+        position: fixed;
+        animation: flotar linear infinite;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.7;
+    }
+
+    @keyframes flotar {
+        0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(-10vh) rotate(360deg); opacity: 0.5; }
+    }
+
+    #modal {
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.9);
+        text-align: center;
+        z-index: 10;
+    }
+
+    #modal span {
+        position: absolute;
+        top: 20px; right: 30px;
+        font-size: 30px;
+        color: white;
+        cursor: pointer;
+        z-index: 20;
+    }
+
+    #modal video {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 95%;
+        height: auto;
+        max-height: 90%;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(255,255,255,0.6);
+    }
+</style>
+</head>
+<body>
+
+<script>
+    const emojis = ["🎈","🎂","✨","🎉","🎁","💖","⭐"];
+    for (let i = 0; i < 60; i++) {
+        let span = document.createElement("span");
+        span.className = "emoji";
+        span.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+        span.style.left = Math.random() * 100 + "vw";
+        span.style.animationDuration = (6 + Math.random() * 8) + "s";
+        span.style.fontSize = (18 + Math.random() * 28) + "px";
+        span.style.animationDelay = Math.random() * 5 + "s";
+        span.style.color = ["#a1c4fd","#fbc2eb","#fed6e3","#cbbacc","#d4fc79"][Math.floor(Math.random()*5)];
+        document.body.appendChild(span);
+    }
+</script>
+
+<div class="header">MI CUMPLEAÑOS</div>
+
+<div class="foto">
+    <img src="ian1.jpeg.jpeg" alt="Ian Harvie">
+    <div class="nombre">IAN HARVIE</div>
+</div>
+
+<div class="mensaje">
+    🎉 <span>Aunque aún no hables con palabras</span>, tu sonrisa dice más de lo que podrías imaginar.
+    Cada gesto tuyo ✨, cada mirada 👀, cada pasito tambaleante 🚶‍♂️, nos recuerda que la vida se trata de momentos simples y mágicos 💖.
+    <span>Feliz primer añito, mi bebé</span>, eres la historia más hermosa que hemos comenzado a escribir 🎂.
+</div>
+
+<div class="foto-derecha">
+    <img src="ian2.jpeg.jpeg" alt="Ian Harvie">
+    <div class="mensaje-abajo">No puedes faltar porque verás cómo soplo mi primer velita 🎂✨</div>
+</div>
+
+<div class="buttons">
+    <a href="https://goo.gl/maps/qTe85xTxnv29HHn6A?g_st=aw" target="_blank" class="btn">📍 Ver Ubicación</a>
+    <a href="https://wa.me/5511272844" target="_blank" class="btn">✅ Confirmar Asistencia papá</a>
+    <a href="https://wa.me/5516279590" target="_blank" class="btn">✅ Confirmar Asistencia mamá</a>
+    <a href="#" class="btn" onclick="document.getElementById('modal').style.display='block'">📸 Ver video</a>
+</div>
+
+<div id="modal">
+    <span onclick="document.getElementById('modal').style.display='none'">✖</span>
+    <video controls autoplay>
+        <source src="video1.mp4.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de videos.
+    </video>
+</div>
+
+</body>
+</html>
